@@ -6,4 +6,10 @@ import { Component } from '@angular/core';
   templateUrl: './counter-component.html',
   styleUrl: './counter-component.css',
 })
-export class CounterComponent { }
+export class CounterComponent {
+  counter = 10;
+
+  increaseBy(value: number) {
+    this.counter += value;
+  }
+}
