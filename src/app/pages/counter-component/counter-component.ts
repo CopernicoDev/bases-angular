@@ -12,4 +12,12 @@ export class CounterComponent {
   increaseBy(value: number) {
     this.counter += value;
   }
+
+  resetCounter() {
+    this.counter = 10;
+  }
+
+  decrease(value: number) {
+    this.counter -= value;
+  }
 }
