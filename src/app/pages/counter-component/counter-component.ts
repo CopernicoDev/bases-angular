@@ -1,10 +1,11 @@
-import { Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 
 @Component({
   selector: 'app-counter-component',
   imports: [],
   templateUrl: './counter-component.html',
   styleUrl: './counter-component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CounterComponent {
   countersignal = signal(10);
