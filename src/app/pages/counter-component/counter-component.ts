@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
   selector: 'app-counter-component',
@@ -7,17 +7,21 @@ import { Component } from '@angular/core';
   styleUrl: './counter-component.css',
 })
 export class CounterComponent {
+  countersignal = signal(10);
   counter = 10;
 
   increaseBy(value: number) {
     this.counter += value;
+    this.countersignal.update((currentValue) => currentValue + value);
   }
 
   resetCounter() {
-    this.counter = 10;
+    this.counter = 0;
+    this.countersignal.set(0);
   }
 
-  decrease(value: number) {
+  decreaseBy(value: number) {
     this.counter -= value;
+    this.countersignal.update((currentValue) => currentValue - value);
   }
 }
