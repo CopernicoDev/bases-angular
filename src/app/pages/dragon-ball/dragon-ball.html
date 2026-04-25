@@ -11,8 +11,9 @@
     <div class="col-12 col-sm-6">
         <h3>Personajes</h3>
         <ol>
-            <li>Goku - 1000</li>
-            <li>Vegeta - 1000</li>
+            @for (charater of characters(); track characters.name) {
+            <li>{{charater.name}} - <strong class="text-danger"> {{charater.power}}</strong></li>
+            }
         </ol>
 
     </div>
