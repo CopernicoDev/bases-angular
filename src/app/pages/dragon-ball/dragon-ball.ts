@@ -1,5 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { NgClass } from '@angular/common';
+import { Component, computed, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
+
+
 
 interface Character {
   name: string;
@@ -8,7 +11,7 @@ interface Character {
 
 @Component({
   selector: 'app-dragon-ball',
-  imports: [RouterLink],
+  imports: [RouterLink, NgClass],
   templateUrl: './dragon-ball.html',
   styleUrl: './dragon-ball.css',
 })
@@ -25,7 +28,23 @@ export class DragonBall {
     },
     {
       name: 'Piccolo',
-      power: 1000
+      power: 800
+    },
+    {
+      name: 'Krillin',
+      power: 500
+    },
+    {
+      name: 'Gohan',
+      power: 900
     }
   ]);
+
+
+  getPowerClass(power: number) {
+    return {
+      'text-danger': power >= 1000,
+      'text-primary': power <= 999,
+    }
+  }
 }
