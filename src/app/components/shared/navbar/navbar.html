@@ -1,19 +1,20 @@
 <nav>
-    <!-- 
+  <!-- 
       FORMA 1 (Atributos estáticos): 
       No usamos corchetes []. Se usa cuando el valor es un texto fijo (string literal). 
       Angular lee el contenido de las comillas literalmente como texto.
       Ej: Va a la ruta '/counter' y le pone la clase 'active'.
     -->
-    <a routerLink="/counter" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Counter</a>
+  <a routerLink="/counter" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Counter</a>
 
-    <!-- 
+  <!-- 
       FORMA 2 (Property Binding con expresiones de TypeScript): 
       Usamos corchetes []. Se usa cuando el valor es dinámico, una variable, o un arreglo.
       Angular lee el contenido de las comillas dobles como código TypeScript.
       - Para pasar texto fijo adentro, necesitamos usar comillas simples o backticks. Ej: `active`
       - Para la ruta, le pasamos un arreglo que contiene el string de la ruta. Ej: [`/hero`]
     -->
-    <a [routerLink]="[`/hero`]" [routerLinkActive]="`active`">Hero</a>
-    <a routerLink="/dragon-ball" routerLinkActive="active">Dragon Ball</a>
+  <a [routerLink]="[`/hero`]" [routerLinkActive]="`active`">Hero</a>
+  <a routerLink="/dragon-ball" routerLinkActive="active">Dragon Ball</a>
+  <a routerLink="/dragon-ball-super" routerLinkActive="active">Dragon Ball Super</a>
 </nav>

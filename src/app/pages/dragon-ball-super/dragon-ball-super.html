@@ -1,0 +1,41 @@
+<h1 class="ms-3">Dragon ball Super</h1>
+<hr>
+<section class="row">
+    <div class="col-12 col-sm-6">
+        <h3 class="ms-3">Agregar Personaje: {{name()}}</h3>
+
+        <input type="text" class="form-control ms-3 mb-2" placeholder="Nombre" #txtName [value]="name()"
+            (input)="name.set(txtName.value)">
+
+        <input type="number" class="form-control ms-3 mb-2" placeholder="Poder" #numberPower [value]="power()"
+            (input)="power.set(numberPower.valueAsNumber)">
+
+        <button (click)="addCharacter()" class="btn btn-primary mt-2 ms-3">Agregar</button>
+        <hr>
+    </div>
+    <div class="col-12 col-sm-6">
+        <h3>Personajes</h3>
+        <ol>
+            @for (charater of characters(); track characters.name) {
+            @if (charater.power>500){
+            <li>{{charater.name}} - <strong [class.text-danger]="charater.power >=1000 ">
+                    {{charater.power}}</strong>
+            </li>
+            } @else {
+            <li>Aqui no vale la pena mostrar nada</li>
+            }
+            }
+            <!-- Otra forma menos utilizada, la mejor es la de arriba
+            @for (charater of characters(); track characters.name) {
+            <li>
+                <strong>{{charater.name}}</strong> - {{' '}}
+                <strong [ngClass]="getPowerClass(charater.power)">{{charater.power}}</strong>
+            </li>
+        }-->
+
+        </ol>
+
+    </div>
+</section>
+<!-- ng-content es como si se injectara el contenido de otro componente -->
+<!-- ng-content es como si se injectara el contenido de otro componente -->
