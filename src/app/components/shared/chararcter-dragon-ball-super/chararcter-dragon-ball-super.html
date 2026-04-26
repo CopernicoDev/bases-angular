@@ -1,0 +1,23 @@
+<h3> Personaje Dragon Ball Super</h3>
+<div class="col-12 col-sm-6">
+    <ol>
+        @for (charater of characters(); track charater.name) {
+        @if (charater.power>500){
+        <li>{{charater.name}} - <strong [class.text-danger]="charater.power >=1000 ">
+                {{charater.power}}</strong>
+        </li>
+        } @else {
+        <li>Aqui no vale la pena mostrar nada</li>
+        }
+        }
+        <!-- Otra forma menos utilizada, la mejor es la de arriba
+            @for (charater of characters(); track characters.name) {
+            <li>
+                <strong>{{charater.name}}</strong> - {{' '}}
+                <strong [ngClass]="getPowerClass(charater.power)">{{charater.power}}</strong>
+            </li>
+        }-->
+
+    </ol>
+
+</div>
