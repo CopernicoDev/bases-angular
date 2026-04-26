@@ -16,6 +16,8 @@ interface Character {
   styleUrl: './dragon-ball.css',
 })
 export class DragonBall {
+  name = signal('');
+  power = signal(0);
 
   characters = signal<Character[]>([
     {
@@ -46,5 +48,26 @@ export class DragonBall {
       'text-danger': power >= 1000,
       'text-primary': power <= 999,
     }
+  }
+
+  addCharacter() {
+    // 1. Validar que tengamos datos
+    if (!this.name() || this.power() <= 0) {
+      return;
+    }
+
+    // 2. Crear el nuevo personaje
+    const newCharacter: Character = {
+      name: this.name(),
+      power: this.power()
+    };
+
+    // 3. Actualizar la signal de characters
+    // Usamos .update() que nos da el valor actual (list) y retornamos un nuevo arreglo
+    this.characters.update((list) => [...list, newCharacter]);
+
+    // 4. Limpiar los inputs
+    this.name.set('');
+    this.power.set(0);
   }
 }
