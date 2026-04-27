@@ -1,8 +1,8 @@
 <h1 class="ms-3">Dragon ball Super</h1>
 <hr>
 <section class="row">
-    <app-form-character-super (newCharacter)="addCharacter($event)" />
-    <app-chararcter-dragon-ball-super [characters]="characters()" listName="Listado de personajes" />
+    <app-form-character-super (newCharacter)="dbzService.addCharacter($event)" />
+    <app-chararcter-dragon-ball-super [characters]="dbzService.characters()" listName="Listado de personajes" />
 </section>
 <!-- ng-content es como si se injectara el contenido de otro componente -->
 <!-- ng-content es como si se injectara el contenido de otro componente -->
