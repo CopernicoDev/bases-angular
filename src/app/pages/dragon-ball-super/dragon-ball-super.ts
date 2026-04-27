@@ -1,17 +1,16 @@
 import { NgClass } from '@angular/common';
 import { Component, computed, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { ChararcterDragonBallSuper } from '../../components/shared/chararcter-dragon-ball-super/chararcter-dragon-ball-super';
+import { FormCharacterSuper } from '../../components/shared/form-character-super/form-character-super';
 
 
 
-interface Character {
-  name: string;
-  power: number;
-}
+
 
 @Component({
   selector: 'app-dragon-ball-super',
-  imports: [RouterLink, NgClass],
+  imports: [RouterLink, NgClass, ChararcterDragonBallSuper, FormCharacterSuper],
   templateUrl: './dragon-ball-super.html',
   styleUrl: './dragon-ball-super.css',
 })
@@ -42,32 +41,8 @@ export class DragonBallSuper {
     }
   ]);
 
-
-  getPowerClass(power: number) {
-    return {
-      'text-danger': power >= 1000,
-      'text-primary': power <= 999,
-    }
+  addCharacter(newCharacter: Character) {
+    this.characters.update(list => [...list, newCharacter]);
   }
 
-  addCharacter() {
-    // 1. Validar que tengamos datos
-    if (!this.name() || this.power() <= 0) {
-      return;
-    }
-
-    // 2. Crear el nuevo personaje
-    const newCharacter: Character = {
-      name: this.name(),
-      power: this.power()
-    };
-
-    // 3. Actualizar la signal de characters
-    // Usamos .update() que nos da el valor actual (list) y retornamos un nuevo arreglo
-    this.characters.update((list) => [...list, newCharacter]);
-
-    // 4. Limpiar los inputs
-    this.name.set('');
-    this.power.set(0);
-  }
 }

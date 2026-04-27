@@ -1,10 +1,7 @@
 import { Component, signal, input } from '@angular/core';
 
 
-interface Character {
-  name: string;
-  power: number;
-}
+
 
 @Component({
   selector: 'app-chararcter-dragon-ball-super',
@@ -13,9 +10,8 @@ interface Character {
   styleUrl: './chararcter-dragon-ball-super.css',
 })
 export class ChararcterDragonBallSuper {
-  name = signal('');
-  power = signal(0);
 
-  characters = input<Character[]>([]);
+  characters = input.required<Character[]>();
+  listName = input.required<string>();
 
 }
