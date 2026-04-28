@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { effect, Injectable, signal } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 
@@ -29,6 +29,10 @@ export class DragonBallSuperService {
             power: 900
         }
     ]);
+
+    saveToLocalStorage = effect(() => {
+        localStorage.setItem('characters-dbz', JSON.stringify(this.characters()));
+    })
 
     addCharacter(newCharacter: Character) {
         this.characters.update(list => [...list, newCharacter]);
